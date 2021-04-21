@@ -24,12 +24,12 @@ app.use(function (req, res, next) {
 })
 
 
-mongoose.connect('mongodb://localhost:27017/businessdb')
+mongoose.connect('mongodb://localhost:27017/businessdb', { useUnifiedTopology: true, useNewUrlParser: true })
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
-  console.log(`${chalk.yellow('[Data base]: Successfully connected to MongoDB')}`)
+  console.log(`${chalk.yellow('\n[Data base]: Successfully connected to MongoDB')}`)
 
   app.listen(app.get('port'), function () {
     console.log(`[Server]: API Server Listening on port ${chalk.white(app.get('port'))} !`)
