@@ -71,7 +71,7 @@
     >
       <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? '' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-xs-only">HadsWorld Rewards</span>
+        <span class="hidden-xs-only">Globomantics Rewards</span>
       </v-toolbar-title>
       <!-- <v-text-field
         light
@@ -103,6 +103,11 @@ export default {
     Transactions,
     EditTransaction
   },
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters.isLoggedIn
+    }
+  },
   data: () => ({
     dialog: false,
     drawer: null,
@@ -121,6 +126,12 @@ export default {
     },
     showProfile: function () {
       console.log('show profile clicked!')
+    }
+  },
+  mounted: function () {
+    console.log('Is user logged in? ', this.isLoggedIn)
+    if (!this.isLoggedIn) {
+      this.$router.push({ path: '/login' })
     }
   }
 }
