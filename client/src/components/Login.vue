@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12>
-        <h2>Login to HadsWorld</h2>
+        <h2>Login to Globomantics</h2>
       </v-flex>
       <v-spacer></v-spacer>
       <v-flex xs12 sm6 offset-sm3>
@@ -32,7 +32,7 @@
       :top="true"
       v-model="showAlert"
     >
-      {{ message }}
+      {{ loginError }}
       <v-btn flat color="pink" v-on:click="showAlert = false">Close</v-btn>
     </v-snackbar>
   </v-container>
@@ -55,16 +55,29 @@ export default {
       ]
     }
   },
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters.isLoggedIn
+    },
+    loginError () {
+      return this.$store.getters.loginError
+    }
+  },
   methods: {
     login: function () {
       const vm = this
-      if (vm.password === 'test111') {
-        this.$router.push({ path: '/' })
-      } else {
-        // show alert to user
-        vm.showAlert = true
-        vm.message = 'email or password is invalid!'
+      const payload = {
+        email: this.email,
+        password: this.password
       }
+      this.$store.dispatch('logInUser', payload)
+        .then(() => {
+          if (vm.isLoggedIn) {
+            this.$router.push({ path: '/' })
+          } else {
+            vm.showAlert = true
+          }
+        })
     },
     cancel: function () {
       console.log('The user does not want to login!')
