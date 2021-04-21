@@ -71,7 +71,7 @@
     >
       <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? '' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-xs-only">Globomantics Rewards</span>
+        <span class="hidden-xs-only">Hads Rewards</span>
       </v-toolbar-title>
       <!-- <v-text-field
         light

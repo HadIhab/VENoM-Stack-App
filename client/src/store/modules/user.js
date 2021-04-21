@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 const state = {
   email: '',
   userId: null,
@@ -12,22 +14,31 @@ const getters = {
 }
 
 const actions = {
-  logInUser ({ commit }, payload) {
-    if (payload.email === 'test1@user.com' && payload.password === 'test111') {
-      // Simulate getting back a valid userId from API call...
-      payload.userId = '5a777f0a75f64a1698221d98'
-      commit('logInUser', payload)
-    } else {
-      commit('loginError')
-    }
+  async logInUser ({ commit }, payload) {
+    await Vue.axios.get('/user/email/' + payload.email)
+      .then((resp) => {
+        let data = resp.data
+        if (data && data.length > 0) {
+          // Test password entered (payload) against user object
+          if (data[0].password === payload.password) {
+            payload.userId = data[0]._id
+            commit('logInUser', payload)
+          } else {
+            commit('loginError')
+          }
+        }
+      })
+      .catch(() => {
+        commit('loginError')
+      })
   }
 }
 
 const mutations = {
   logInUser (state, payload) {
+    state.isLoggedIn = true
     state.email = payload.email
     state.userId = payload.userId
-    state.isLoggedIn = true
   },
   loginError (state) {
     state.isLoggedIn = false
