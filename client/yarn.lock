@@ -6798,6 +6798,11 @@
   "resolved" "https://registry.npmjs.org/vuetify/-/vuetify-1.0.17.tgz"
   "version" "1.0.17"
 
+"vuex@3.0.1":
+  "integrity" "sha512-wLoqz0B7DSZtgbWL1ShIBBCjv22GV5U+vcBFox658g6V0s4wZV9P4YjCNyoHSyIBpj1f29JBoNQIqD82cR4O3w=="
+  "resolved" "https://registry.npmjs.org/vuex/-/vuex-3.0.1.tgz"
+  "version" "3.0.1"
+
 "watchpack@^1.4.0":
   "integrity" "sha512-RSlipNQB1u48cq0wH/BNfCu1tD/cJ8ydFIkNYhp9o+3d+8unClkIovpW5qpFPgmL9OE48wfAnlZydXByWP82AA=="
   "resolved" "https://registry.npmjs.org/watchpack/-/watchpack-1.5.0.tgz"
