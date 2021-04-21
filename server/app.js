@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 const chalk = require('chalk')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -12,6 +13,7 @@ app.set('port', (process.env.PORT || 8081))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(cors())
 app.use('/api', api)
 app.use(express.static('static'))
 
