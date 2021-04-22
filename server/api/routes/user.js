@@ -31,17 +31,16 @@ module.exports = function (router) {
     })
   })
 
+  // Update user document...
   router.put('/user/:id', function (req, res) {
-    console.log(req.body)
     let qry = { _id: req.params.id }
     let doc = {
-      // first: req.body.firstName,
-      // last: req.body.lastName,
-      // email: req.body.email,
-      // password: req.body.password,
+      first: req.body.first,
+      last: req.body.last,
+      email: req.body.email,
+      password: req.body.password,
       isActive: req.body.isActive
     }
-    console.log(doc)
     User.update(qry, doc, function (err, respRaw) {
       if (err) return console.log(err)
       res.status(200).json(respRaw)

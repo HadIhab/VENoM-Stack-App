@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import bcrypt from 'bcryptjs'
 
 const state = {
   email: '',

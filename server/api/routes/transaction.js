@@ -39,7 +39,7 @@ module.exports = function (router) {
     const pipeline = [
       {
         $match: {
-          userId: mongoose.Types.ObjectId(userId),
+          userId: mongoose.Types.ObjectId(userId)
         }
       },
       {
