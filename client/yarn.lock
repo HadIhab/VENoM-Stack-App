@@ -1073,6 +1073,11 @@
   "resolved" "https://registry.npmjs.org/batch/-/batch-0.6.1.tgz"
   "version" "0.6.1"
 
+"bcryptjs@^2.4.3":
+  "integrity" "sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms="
+  "resolved" "https://registry.npmjs.org/bcryptjs/-/bcryptjs-2.4.3.tgz"
+  "version" "2.4.3"
+
 "bfj-node4@^5.2.0":
   "integrity" "sha512-SOmOsowQWfXc7ybFARsK3C4MCOWzERaOMV/Fl3Tgjs+5dJWyzo3oa127jL44eMbQiAN17J7SvAs2TRxEScTUmg=="
   "resolved" "https://registry.npmjs.org/bfj-node4/-/bfj-node4-5.3.1.tgz"

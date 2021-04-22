@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import bcrypt from 'bcryptjs'
 
 const state = {
   email: '',
-  userId: null,
   first: '',
   last: '',
+  userId: null,
   isLoggedIn: false,
   loginError: ''
 }
@@ -23,8 +22,7 @@ const actions = {
         let data = resp.data
         if (data && data.length > 0) {
           // Test password entered (payload) against user object
-          const pwdHash = data[0].password
-          if (bcrypt.compareSync(payload.password, pwdHash)) {
+          if (data[0].password === payload.password) {
             const user = data[0]
             payload.userId = user._id
             payload.first = user.first
@@ -38,14 +36,6 @@ const actions = {
       })
       .catch(() => {
         commit('loginError')
-      })
-  },
-  async loadUserProfile ({ commit }) {
-    // get the user object for the currently logged in user...
-    await Vue.axios.get('/user/' + this.userId)
-      .then((resp) => {
-        let data = resp.data
-        console.log('loadUserProfile data:', data)
       })
   },
   updateUserProfile ({ commit }, payload) {
@@ -70,8 +60,6 @@ const mutations = {
   logInUser (state, payload) {
     state.isLoggedIn = true
     state.email = payload.email
-    state.first = payload.first
-    state.last = payload.last
     state.userId = payload.userId
   },
   loginError (state) {
